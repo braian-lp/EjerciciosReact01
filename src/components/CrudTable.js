@@ -1,11 +1,12 @@
-import React from 'react'
-import CrudTableRow from './CrudTableRow'
+import React from 'react';
+import CrudTableRow from './CrudTableRow';
+import { Table } from 'react-bootstrap';
 
-const CrudTable = ({data}) => {
+const CrudTable = ({data, setDataToEdit, deleteData}) => {
     return (
         <div>
             <h3>Tabla de datos</h3>
-            <table>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -19,10 +20,16 @@ const CrudTable = ({data}) => {
                         <td colSpan="3">Sin datos</td>
                     </tr>
                     ):(
-                        data.map(el=> <CrudTableRow key={el.id} el={el}/>)
+                        data.map(el=> (
+                            <CrudTableRow 
+                                key={el.id} el={el} 
+                                setDataToEdit={setDataToEdit} 
+                                deleteData={deleteData}
+                            />
+                        ))
                     )}
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 }

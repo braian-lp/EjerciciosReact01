@@ -1,13 +1,15 @@
 import React from 'react'
+import {Button} from 'react-bootstrap'
 
-const CrudTableRow = ({el}) => {
+const CrudTableRow = ({el, setDataToEdit, deleteData}) => {
+    let {name, telephone, id}=el;
     return (
         <tr>
-            <td>{el.name}</td>
-            <td>{el.telefono}</td>
+            <td>{name}</td>
+            <td>{telephone}</td>
             <td>
-                <button>Editar</button>
-                <button>Eliminar</button>
+                <Button variant="primary" onClick={()=> setDataToEdit(el)}>Editar</Button>{' '}
+                <Button variant="secondary" onClick={()=> deleteData(id)}>Eliminar</Button>
             </td>
         </tr>
     )
