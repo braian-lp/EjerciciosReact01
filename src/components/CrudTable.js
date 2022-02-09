@@ -15,18 +15,19 @@ const CrudTable = ({data, setDataToEdit, deleteData}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.length === 0 ?( 
-                    <tr>
-                        <td colSpan="3">Sin datos</td>
-                    </tr>
+                    {data.length > 0 ?( 
+                    data.map(el=> (
+                        <CrudTableRow 
+                            /* el.id para trabajar con el array como var, cambiamos segun api*/
+                            key={el.id_contacto} el={el} 
+                            setDataToEdit={setDataToEdit} 
+                            deleteData={deleteData}
+                        />
+                    ))
                     ):(
-                        data.map(el=> (
-                            <CrudTableRow 
-                                key={el.id} el={el} 
-                                setDataToEdit={setDataToEdit} 
-                                deleteData={deleteData}
-                            />
-                        ))
+                        <tr>
+                            <td colSpan="3">Sin datos</td>
+                        </tr>
                     )}
                 </tbody>
             </Table>

@@ -24,6 +24,7 @@ const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
         });
     };
 
+    /* Enviar contenido formulario */
     const handleSubmit = (e) =>{
         e.preventDefault();
 
@@ -31,16 +32,18 @@ const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
             alert("Datos incompletos");
             return;
         }
-
+        //Se crea un nuevo contacto
         if(form.id === null){
             createData(form);
         }else{
+            //se actualiza un contacto
             updateData(form);
         }
 
         handleReset();
     };
 
+    /* Resetear el formulario */
     const handleReset = (e) =>{
         setForm(initialForm);
         setDataToEdit(null);
@@ -61,7 +64,7 @@ const CrudForm = ({createData, updateData, dataToEdit, setDataToEdit}) => {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                    <Form.Label>Nunero de Telf</Form.Label>
+                    <Form.Label>Numero de Telf</Form.Label>
                     <Form.Control
                         type="text" 
                         name="telephone" 
